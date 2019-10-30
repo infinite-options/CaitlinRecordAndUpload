@@ -1,0 +1,16 @@
+/Users/Kyle/Downloads/AudioRecorderSample-master/AudioRecorderSample/bin/Debug/netstandard2.0/AudioRecorderSample.deps.json
+/Users/Kyle/Downloads/AudioRecorderSample-master/AudioRecorderSample/bin/Debug/netstandard2.0/AudioRecorderSample.dll
+/Users/Kyle/Downloads/AudioRecorderSample-master/AudioRecorderSample/bin/Debug/netstandard2.0/AudioRecorderSample.pdb
+/Users/Kyle/Downloads/AudioRecorderSample-master/AudioRecorderSample/obj/Debug/netstandard2.0/AudioRecorderSample.csprojAssemblyReference.cache
+/Users/Kyle/Downloads/AudioRecorderSample-master/AudioRecorderSample/obj/Debug/netstandard2.0/AudioRecorderSample.AssemblyInfoInputs.cache
+/Users/Kyle/Downloads/AudioRecorderSample-master/AudioRecorderSample/obj/Debug/netstandard2.0/AudioRecorderSample.AssemblyInfo.cs
+/Users/Kyle/Downloads/AudioRecorderSample-master/AudioRecorderSample/obj/Debug/netstandard2.0/AudioRecorderSample.dll
+/Users/Kyle/Downloads/AudioRecorderSample-master/AudioRecorderSample/obj/Debug/netstandard2.0/AudioRecorderSample.pdb
+/Users/Kyle/Downloads/CaitlinRecordAndUpload/AudioRecorderSample/bin/Debug/netstandard2.0/AudioRecorderSample.deps.json
+/Users/Kyle/Downloads/CaitlinRecordAndUpload/AudioRecorderSample/bin/Debug/netstandard2.0/AudioRecorderSample.dll
+/Users/Kyle/Downloads/CaitlinRecordAndUpload/AudioRecorderSample/bin/Debug/netstandard2.0/AudioRecorderSample.pdb
+/Users/Kyle/Downloads/CaitlinRecordAndUpload/AudioRecorderSample/obj/Debug/netstandard2.0/AudioRecorderSample.csprojAssemblyReference.cache
+/Users/Kyle/Downloads/CaitlinRecordAndUpload/AudioRecorderSample/obj/Debug/netstandard2.0/AudioRecorderSample.AssemblyInfoInputs.cache
+/Users/Kyle/Downloads/CaitlinRecordAndUpload/AudioRecorderSample/obj/Debug/netstandard2.0/AudioRecorderSample.AssemblyInfo.cs
+/Users/Kyle/Downloads/CaitlinRecordAndUpload/AudioRecorderSample/obj/Debug/netstandard2.0/AudioRecorderSample.dll
+/Users/Kyle/Downloads/CaitlinRecordAndUpload/AudioRecorderSample/obj/Debug/netstandard2.0/AudioRecorderSample.pdb

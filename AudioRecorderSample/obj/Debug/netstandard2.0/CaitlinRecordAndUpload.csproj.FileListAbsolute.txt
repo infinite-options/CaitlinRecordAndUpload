@@ -1,0 +1,8 @@
+/Users/Kyle/Downloads/CaitlinRecordAndUpload/AudioRecorderSample/bin/Debug/netstandard2.0/CaitlinRecordAndUpload.deps.json
+/Users/Kyle/Downloads/CaitlinRecordAndUpload/AudioRecorderSample/bin/Debug/netstandard2.0/CaitlinRecordAndUpload.dll
+/Users/Kyle/Downloads/CaitlinRecordAndUpload/AudioRecorderSample/bin/Debug/netstandard2.0/CaitlinRecordAndUpload.pdb
+/Users/Kyle/Downloads/CaitlinRecordAndUpload/AudioRecorderSample/obj/Debug/netstandard2.0/CaitlinRecordAndUpload.csprojAssemblyReference.cache
+/Users/Kyle/Downloads/CaitlinRecordAndUpload/AudioRecorderSample/obj/Debug/netstandard2.0/CaitlinRecordAndUpload.AssemblyInfoInputs.cache
+/Users/Kyle/Downloads/CaitlinRecordAndUpload/AudioRecorderSample/obj/Debug/netstandard2.0/CaitlinRecordAndUpload.AssemblyInfo.cs
+/Users/Kyle/Downloads/CaitlinRecordAndUpload/AudioRecorderSample/obj/Debug/netstandard2.0/CaitlinRecordAndUpload.dll
+/Users/Kyle/Downloads/CaitlinRecordAndUpload/AudioRecorderSample/obj/Debug/netstandard2.0/CaitlinRecordAndUpload.pdb
