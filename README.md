@@ -8,8 +8,6 @@ Copy and paste this string where applicable on MainPage.xaml.cs
 ------------------------------------------------------------------------------------------------------------
 
 The following NuGet packages must be installed                                                              
-Plugin.AudioRecorder
-Microsoft.Azure.Storage.Blob
-WindowsAzure.Storage
-
-
+Plugin.AudioRecorder                                                                                        
+Microsoft.Azure.Storage.Blob                                                                                
+WindowsAzure.Storage                                                                                          
