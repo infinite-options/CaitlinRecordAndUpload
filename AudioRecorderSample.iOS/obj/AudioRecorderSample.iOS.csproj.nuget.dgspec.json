@@ -1,0 +1,140 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/Kyle/Downloads/CaitlinRecordAndUpload/AudioRecorderSample.iOS/AudioRecorderSample.iOS.csproj": {}
+  },
+  "projects": {
+    "/Users/Kyle/Downloads/CaitlinRecordAndUpload/AudioRecorderSample.iOS/AudioRecorderSample.iOS.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/Kyle/Downloads/CaitlinRecordAndUpload/AudioRecorderSample.iOS/AudioRecorderSample.iOS.csproj",
+        "projectName": "AudioRecorderSample.iOS",
+        "projectPath": "/Users/Kyle/Downloads/CaitlinRecordAndUpload/AudioRecorderSample.iOS/AudioRecorderSample.iOS.csproj",
+        "packagesPath": "/Users/Kyle/.nuget/packages/",
+        "outputPath": "/Users/Kyle/Downloads/CaitlinRecordAndUpload/AudioRecorderSample.iOS/obj/",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "configFilePaths": [
+          "/Users/Kyle/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "xamarinios10"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "xamarinios10": {
+            "projectReferences": {
+              "/Users/Kyle/Downloads/CaitlinRecordAndUpload/AudioRecorderSample/AudioRecorderSample.csproj": {
+                "projectPath": "/Users/Kyle/Downloads/CaitlinRecordAndUpload/AudioRecorderSample/AudioRecorderSample.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "xamarinios10": {
+          "dependencies": {
+            "Microsoft.Azure.Storage.Blob": {
+              "target": "Package",
+              "version": "[11.1.0, )"
+            },
+            "Plugin.AudioRecorder": {
+              "target": "Package",
+              "version": "[1.1.0, )"
+            },
+            "WindowsAzure.Storage": {
+              "target": "Package",
+              "version": "[9.3.3, )"
+            },
+            "Xamarin.Forms": {
+              "target": "Package",
+              "version": "[3.0.0.482510, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    },
+    "/Users/Kyle/Downloads/CaitlinRecordAndUpload/AudioRecorderSample/AudioRecorderSample.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/Kyle/Downloads/CaitlinRecordAndUpload/AudioRecorderSample/AudioRecorderSample.csproj",
+        "projectName": "AudioRecorderSample",
+        "projectPath": "/Users/Kyle/Downloads/CaitlinRecordAndUpload/AudioRecorderSample/AudioRecorderSample.csproj",
+        "packagesPath": "/Users/Kyle/.nuget/packages/",
+        "outputPath": "/Users/Kyle/Downloads/CaitlinRecordAndUpload/AudioRecorderSample/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/Kyle/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "Microsoft.Azure.Storage.Blob": {
+              "target": "Package",
+              "version": "[11.1.0, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "Plugin.AudioRecorder": {
+              "target": "Package",
+              "version": "[1.1.0, )"
+            },
+            "WindowsAzure.Storage": {
+              "target": "Package",
+              "version": "[9.3.3, )"
+            },
+            "Xamarin.Forms": {
+              "target": "Package",
+              "version": "[3.0.0.482510, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
