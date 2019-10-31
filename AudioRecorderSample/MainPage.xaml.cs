@@ -19,7 +19,7 @@ namespace AudioRecorderSample
 	public partial class MainPage : ContentPage
     {
 
-        static string _storageConnection = "ADD STRING HERE FROM SLACK";
+        static string _storageConnection = "DefaultEndpointsProtocol=https;AccountName=xamarinblob;AccountKey=0Yaoeff3q/UxWIPoRernkxfLS+ulk2fR6YrE1CZPzx3/utu2ks6pLzXVOk/lmBh7sAhxp2enqYoIMLcRM7X+lQ==;EndpointSuffix=core.windows.net";
         static CloudStorageAccount cloudStorageAccount = CloudStorageAccount.Parse(_storageConnection);
         static CloudBlobClient cloudBlobClient = cloudStorageAccount.CreateCloudBlobClient();
         static CloudBlobContainer cloudBlobContainer = cloudBlobClient.GetContainerReference("images");
