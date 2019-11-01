@@ -27,7 +27,7 @@
                 </StackLayout>
                 <StackLayout Orientation="Horizontal" Padding="0,0,0,20">
                     <Label Text="Detect silence:" FontSize = "21"/>
-                    <Switch x:Name="IsSilence" IsToggled = "true" />
+                    <Switch x:Name="IsSilence" IsToggled = "false" />
                 </StackLayout>
             </StackLayout>
         </StackLayout>
