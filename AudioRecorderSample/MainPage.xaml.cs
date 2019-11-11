@@ -12,6 +12,7 @@ using Xamarin.Forms.PlatformConfiguration;
 using System.Diagnostics;
 using Microsoft.Azure.Storage;
 using Microsoft.Azure.Storage.Blob;
+using System.Net.Http;
 
 namespace AudioRecorderSample
 {
@@ -19,13 +20,15 @@ namespace AudioRecorderSample
 	public partial class MainPage : ContentPage
     {
 
-        static string _storageConnection = "DefaultEndpointsProtocol=https;AccountName=xamarinblob;AccountKey=0Yaoeff3q/UxWIPoRernkxfLS+ulk2fR6YrE1CZPzx3/utu2ks6pLzXVOk/lmBh7sAhxp2enqYoIMLcRM7X+lQ==;EndpointSuffix=core.windows.net";
+        static string _storageConnection = "INSERT AZURE KEY HERE";
         static CloudStorageAccount cloudStorageAccount = CloudStorageAccount.Parse(_storageConnection);
         static CloudBlobClient cloudBlobClient = cloudStorageAccount.CreateCloudBlobClient();
         static CloudBlobContainer cloudBlobContainer = cloudBlobClient.GetContainerReference("images");
 
         AudioRecorderService recorder;
         AudioPlayer player;
+        Label personDetail;
+
         bool isTimerRunning = false;
         int  seconds         = 0, minutes = 0;
         public MainPage()
@@ -137,6 +140,21 @@ namespace AudioRecorderSample
 
         private async void Play_Clicked(object sender, EventArgs e)
         {
+
+            var request = new HttpRequestMessage();
+            request.RequestUri = new Uri("https://speakerengineeast.azurewebsites.net/api/engine");
+            request.Method = HttpMethod.Get;
+            var client = new HttpClient();
+            HttpResponseMessage response = await client.SendAsync(request);
+            //if (response.StatusCode == System.Net.HttpStatusCode.OK)   (If statement was not being satisfied, idk why, but at this moment it doesnt matter)
+            //{
+            HttpContent content = response.Content;
+            var kitchensString = await content.ReadAsStringAsync();
+            //var str = JObject.Parse(kitchensString);                   (Don't need to parse at this moment)
+            System.Diagnostics.Debug.WriteLine(kitchensString);
+            //}
+            //personDetail.Text = kitchensString;
+
             try
             {
                 var filePath = recorder.GetAudioFilePath();
