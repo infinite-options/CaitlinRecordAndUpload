@@ -119,10 +119,22 @@ namespace AudioRecorderSample
 
         async void Stop_Clicked(object sender, EventArgs e)
         {
+            var request = new HttpRequestMessage();
+            request.RequestUri = new Uri("https://speakerengineeast.azurewebsites.net/api/engine");
+            request.Method = HttpMethod.Get;
+            var client = new HttpClient();
+            HttpResponseMessage response = await client.SendAsync(request);
+            //if (response.StatusCode == System.Net.HttpStatusCode.OK)   (If statement was not being satisfied, idk why, but at this moment it doesnt matter)
+            //{
+            HttpContent content = response.Content;
+            var kitchensString = await content.ReadAsStringAsync();
+            //var str = JObject.Parse(kitchensString);                   (Don't need to parse at this moment)
+            System.Diagnostics.Debug.WriteLine(kitchensString);
+            personDetails.Text = kitchensString;
+            peronImg.Source = "brother";
 
             try
             {
-
                 StopRecording();
                 await recorder.StopRecording();
 
@@ -171,22 +183,6 @@ namespace AudioRecorderSample
 
         async void Play_Clicked(object sender, EventArgs e)
         {
-
-            var request = new HttpRequestMessage();
-            request.RequestUri = new Uri("https://speakerengineeast.azurewebsites.net/api/engine");
-            request.Method = HttpMethod.Get;
-            var client = new HttpClient();
-            HttpResponseMessage response = await client.SendAsync(request);
-            //if (response.StatusCode == System.Net.HttpStatusCode.OK)   (If statement was not being satisfied, idk why, but at this moment it doesnt matter)
-            //{
-            HttpContent content = response.Content;
-            var kitchensString = await content.ReadAsStringAsync();
-            //var str = JObject.Parse(kitchensString);                   (Don't need to parse at this moment)
-            System.Diagnostics.Debug.WriteLine(kitchensString);
-            personDetails.Text = kitchensString;
-            peronImg.Source = "brother";
-            //}
-
             try
             {
                 var filePath = recorder.GetAudioFilePath();
