@@ -184,6 +184,7 @@ namespace AudioRecorderSample
             //var str = JObject.Parse(kitchensString);                   (Don't need to parse at this moment)
             System.Diagnostics.Debug.WriteLine(kitchensString);
             personDetails.Text = kitchensString;
+            peronImg.Source = "brother";
             //}
 
             try

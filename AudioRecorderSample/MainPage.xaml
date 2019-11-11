@@ -37,8 +37,8 @@
             <Button x:Name="bntPlay" Text = "Play" BackgroundColor="Silver"  WidthRequest="120" Image="Start" Clicked="Play_Clicked" IsEnabled= "true"/>
         </FlexLayout>
 
+        <Image x:Name="peronImg" WidthRequest="200" HeightRequest="200"/>
         <Label x:Name ="personDetails" FontSize = "15" WidthRequest="200" HeightRequest="100"/>
-        <Image x:Name="peronImg" Source="Start" WidthRequest="200" HeightRequest="200"/>
 
     </StackLayout>
 
