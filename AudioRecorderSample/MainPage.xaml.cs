@@ -12,25 +12,24 @@ using Xamarin.Forms.PlatformConfiguration;
 using System.Diagnostics;
 using Microsoft.Azure.Storage;
 using Microsoft.Azure.Storage.Blob;
+using System.Diagnostics.Contracts;
 using System.Net.Http;
+using Newtonsoft.Json.Linq;
 
 namespace AudioRecorderSample
 {
-    
-	public partial class MainPage : ContentPage
-    {
 
-        static string _storageConnection = "INSERT AZURE KEY HERE";
+    public partial class MainPage : ContentPage
+    {
+        static string _storageConnection = "INSERT AZURE KEY";
         static CloudStorageAccount cloudStorageAccount = CloudStorageAccount.Parse(_storageConnection);
         static CloudBlobClient cloudBlobClient = cloudStorageAccount.CreateCloudBlobClient();
         static CloudBlobContainer cloudBlobContainer = cloudBlobClient.GetContainerReference("images");
 
         AudioRecorderService recorder;
         AudioPlayer player;
-        Label personDetail;
-
         bool isTimerRunning = false;
-        int  seconds         = 0, minutes = 0;
+        int seconds = 0, minutes = 0;
         public MainPage()
         {
             InitializeComponent();
@@ -48,9 +47,9 @@ namespace AudioRecorderSample
             };
 
             player = new AudioPlayer();
-            player.FinishedPlaying += Finish_Playing; 
-             
-             
+            player.FinishedPlaying += Finish_Playing;
+
+
         }
 
         void Finish_Playing(object sender, EventArgs e)
@@ -68,14 +67,15 @@ namespace AudioRecorderSample
 
         async void Record_Clicked(object sender, EventArgs e)
         {
-            if (!recorder.IsRecording) 
+            if (!recorder.IsRecording)
             {
                 seconds = 0;
                 minutes = 0;
                 isTimerRunning = true;
-                Device.StartTimer(TimeSpan.FromSeconds(1), () => {
+                Device.StartTimer(TimeSpan.FromSeconds(1), () =>
+                {
                     seconds++;
-                   
+
                     if (seconds.ToString().Length == 1)
                     {
                         lblSeconds.Text = "0" + seconds.ToString();
@@ -114,18 +114,48 @@ namespace AudioRecorderSample
                 bntStop.BackgroundColor = Color.FromHex("#7cbb45");
 
                 await audioRecordTask;
-            }  
+            }
         }
-           
+
         async void Stop_Clicked(object sender, EventArgs e)
         {
-            StopRecording();
-            await recorder.StopRecording();
+
+            try
+            {
+
+                StopRecording();
+                await recorder.StopRecording();
+
+                var filePath = recorder.GetAudioFilePath();
+
+                string fileName = Path.GetFileName(filePath);
+                await cloudBlobContainer.CreateIfNotExistsAsync();
+
+                await cloudBlobContainer.SetPermissionsAsync(new BlobContainerPermissions
+                {
+                    PublicAccess = BlobContainerPublicAccessType.Blob
+                });
+                var blockBlob = cloudBlobContainer.GetBlockBlobReference(fileName);
+                await UploadImage(blockBlob, filePath);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
+
+        private static async Task UploadImage(CloudBlockBlob blob, string filePath)
+        {
+            using (FileStream fileStream = File.OpenRead(filePath))
+            {
+                await blob.UploadFromStreamAsync(fileStream);
+            }
+        }
+
 
         void StopRecording()
         {
-            Debug.WriteLine("stuuupid");
 
             isTimerRunning = false;
             bntRecord.IsEnabled = true;
@@ -136,9 +166,10 @@ namespace AudioRecorderSample
             bntStop.BackgroundColor = Color.Silver;
             lblSeconds.Text = "00";
             lblMinutes.Text = "00";
+
         }
 
-        private async void Play_Clicked(object sender, EventArgs e)
+        async void Play_Clicked(object sender, EventArgs e)
         {
 
             var request = new HttpRequestMessage();
@@ -152,22 +183,13 @@ namespace AudioRecorderSample
             var kitchensString = await content.ReadAsStringAsync();
             //var str = JObject.Parse(kitchensString);                   (Don't need to parse at this moment)
             System.Diagnostics.Debug.WriteLine(kitchensString);
+            personDetails.Text = kitchensString;
             //}
-            //personDetail.Text = kitchensString;
 
             try
             {
                 var filePath = recorder.GetAudioFilePath();
-
                 string fileName = Path.GetFileName(filePath);
-                await cloudBlobContainer.CreateIfNotExistsAsync();
-
-                await cloudBlobContainer.SetPermissionsAsync(new BlobContainerPermissions
-                {
-                    PublicAccess = BlobContainerPublicAccessType.Blob
-                });
-                var blockBlob = cloudBlobContainer.GetBlockBlobReference(fileName);
-                await UploadImage(blockBlob, filePath);
 
                 if (filePath != null)
                 {
@@ -181,13 +203,44 @@ namespace AudioRecorderSample
                 throw ex;
             }
 
-            async Task UploadImage(CloudBlockBlob blob, string filePath)
-            {
-                using (var fileStream = File.OpenRead(filePath))
-                {
-                    await blob.UploadFromStreamAsync(fileStream);
-                }
-            }
+            //      CODE FOR DOWNLOAD: WORK IN PROGRESS
+            //try
+            //{
+
+            //    string filePath = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + ".txt";
+            //    string fileName = Path.GetFileName(filePath);
+            //    var blockBlob = cloudBlobContainer.GetBlockBlobReference("result.txt");
+            //    await DownloadImage(blockBlob, filePath);
+
+            //string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            //string filename = Path.Combine(path, "files.txt");
+
+            //using (var streamWriter = new StreamWriter(filename, true))
+            //{
+            //    streamWriter.WriteLine(DateTime.UtcNow);
+            //}
+
+            //using (var streamReader = new StreamReader(filename))
+            //{
+            //    string Content = streamReader.ReadToEnd();
+            //    System.Diagnostics.Debug.WriteLine(Content);
+            //}
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw ex;
+            //}
         }
-    }    
+
+
+        //private static async Task DownloadImage(CloudBlockBlob blob, string filePath)
+        //{
+        //    if (blob.ExistsAsync().Result)
+        //    {
+        //        await blob.DownloadToFileAsync(filePath, FileMode.Create);
+        //    }
+
+        //}
+    }
 }
